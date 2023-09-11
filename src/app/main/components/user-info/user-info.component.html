@@ -1,0 +1,39 @@
+<div class="show-user-info">
+  <div class="show-user-info-container">
+    <div class="show-user-info--header">
+      <div class="user-avatar">
+      <span class="material-symbols-outlined user-avatar-icon">
+        person
+      </span>
+      </div>
+      <div class="channel-name">{{currentUser.displayName}}</div>
+      <div *ngIf="isShowFunctionButton" class="function-button-block">
+        <div class="function-button-item">
+          <button mat-flat-button color="primary">Kết bạn</button>
+        </div>
+        <div class="function-button-item">
+          <button mat-flat-button color="primary">Nhắn tin</button>
+        </div>
+      </div>
+    </div>
+    <div class="show-user-info--content">
+      <div class="user-profile-title">
+        <p>Thông tin cá nhân</p>
+      </div>
+      <div class="user-profile-details">
+        <div class="user-profile-item">
+          <span>Email:</span>
+          <span>{{currentUser.email}}</span>
+        </div>
+        <div class="user-profile-item">
+          <span>Giới tính</span>
+          <span>{{currentUser.gender}}</span>
+        </div>
+        <div class="user-profile-item">
+          <span>Ngày sinh</span>
+          <span>{{currentUser.dayOfBirth | date}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

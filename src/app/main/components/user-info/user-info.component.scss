@@ -1,0 +1,64 @@
+@use "@angular/material" as mat;
+@import "src/styles";
+
+.show-user-info--header {
+  border-top: 1px solid $border-color;
+  padding: 15px 0 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .user-avatar {
+    text-align: center;
+    height: 66px;
+    width: 66px;
+    font-size: 2.4em;
+    line-height: 46px;
+    padding-top: 7px;
+    border-radius: 36px
+  }
+
+  .channel-name {
+    margin-top: 15px;
+    font-size: 19px;
+    font-weight: 500;
+  }
+}
+
+.function-button-block {
+  display: flex;
+  justify-content: center;
+
+  .function-button-item {
+    padding: 12px;
+  }
+}
+
+.show-user-info--content {
+  border-top: 1px solid $border-color;
+  padding-top: 15px;
+}
+
+.user-profile-title {
+  font-weight: 500;
+}
+
+.user-profile-details {
+  margin: 14px 0 22px 0;
+  padding-right: 20px;
+}
+
+.user-profile-item {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.user-profile-item span:first-child {
+  color: var(--text-secondary);
+  width: 110px;
+  min-width: 110px;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  display: inline-block;
+}

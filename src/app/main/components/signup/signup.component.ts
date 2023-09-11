@@ -57,7 +57,7 @@ export class SignupComponent {
     }
 
     this.userService.register(body).subscribe({
-      next: git value => {
+      next: value => {
         this.messageService.add({summary: 'Success!!!', detail: 'Register success'})
         this.router.navigate(['/login'])
       }

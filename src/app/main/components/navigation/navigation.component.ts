@@ -1,9 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {filter, Subscription} from "rxjs";
+import {delay, filter, Subscription} from "rxjs";
 import {User} from "../../model/user";
 import {StorageService} from "../../services/storage.service";
+import {DialogService, DynamicDialogRef} from "primeng/dynamicdialog";
+import {CreateChatComponent} from "../create-chat/create-chat.component";
+import {UserInfoComponent} from "../user-info/user-info.component";
 
 @Component({
   selector: 'app-navigation',
@@ -15,10 +18,12 @@ export class NavigationComponent implements OnDestroy, OnInit{
   user?: User
   sub!: Subscription
   showNavigationMenu = false
+  ref!: DynamicDialogRef;
 
   constructor(private router: Router,
               private userService: UserService,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private dialogService: DialogService) {
     this.sub = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(event => {
@@ -46,5 +51,22 @@ export class NavigationComponent implements OnDestroy, OnInit{
     this.hideNav = true
     this.storageService.clean()
     this.router.navigate(['/login'])
+  }
+
+  openUserInfoDialog() {
+    this.ref = this.dialogService.open(UserInfoComponent, {
+      header: 'Thông tin tài khoản',
+      width: '400px',
+      height: '48%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000
+    })
+
+    this.ref.onClose.subscribe({
+      next: async value => {
+        await delay(500)
+        // this.fetchChatList()
+      }
+    })
   }
 }
