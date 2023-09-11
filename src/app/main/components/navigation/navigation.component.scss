@@ -1,0 +1,59 @@
+@use '@angular/material' as mat;
+@import "src/styles";
+
+
+$navigation-height: 56px;
+
+.navigation {
+  height: $navigation-height;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $border-color;
+}
+
+.title {
+  margin: auto 25px;
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: $navigation-height;
+  color: mat.get-color-from-palette($signature-primary, 500);
+}
+
+.user-option{
+  line-height: $navigation-height;
+  margin: auto 25px;
+  position: relative;
+
+  .link {
+    font-weight: 500;
+    color: mat.get-color-from-palette($signature-primary, 500);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.nav-menu {
+  height: 50px;
+  width: 140px;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 7px;
+  z-index: 1000;
+
+  .nav-menu-item {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    border-radius: 7px;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+      background-color: mat.get-color-from-palette($signature-primary, 50);
+    }
+  }
+}

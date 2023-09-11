@@ -1,0 +1,17 @@
+<div class="friend-request">
+  <div class="friend-request-container">
+    <div class="friend-request--item" *ngFor="let request of friendRequests;trackBy: userIdentity">
+      <div class="user-info">
+        <div class="user-avatar">OK</div>
+        <div class="user-name"> {{request.user.displayName}}</div>
+      </div>
+      <div *ngIf="!request.isResponse" class="response-option">
+        <div class="button primary" (click)="onResponse(request,'accept')"> Đồng ý</div>
+        <div class="button disable" (click)="onResponse(request,'deny')"> Từ chối</div>
+      </div>
+      <div *ngIf="request.isResponse" class="response-message">
+        {{request.responseMessage}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="search-user">
+  <div class="search-user-container">
+    <div class="search-input">
+      <div class="search-input-container">
+        <input class="user-search"
+               [formControl]="formControl"
+               (keyup)="onSearchKeyUp()"
+               (keyup.delete)="onSearchKeyUp()"
+               type="text"
+               placeholder="Tìm kiếm người dùng">
+      </div>
+    </div>
+    <div class="user-container">
+      <div class="user-item" *ngFor="let stranger of users">
+        <div class="user-info">
+          <div class="user-avatar"> OK </div>
+          <div class="user-name">{{stranger.user.displayName}}</div>
+        </div>
+        <div *ngIf="!stranger.isResponse" class="user-option">
+          <div class="button primary" (click)="addFriend(stranger)"> Kết bạn </div>
+        </div>
+        <div *ngIf="stranger.isResponse" class="user-option">
+          <div class="button disable prevent-select">Đã gửi lời mời kết bạn</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

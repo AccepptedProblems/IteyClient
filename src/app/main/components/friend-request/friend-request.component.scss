@@ -1,0 +1,70 @@
+@use "@angular/material" as mat;
+@import "src/styles";
+
+.friend-request{
+
+}
+
+.friend-request-container {
+  border-top: 0.5px solid $border-color;
+  padding-top: 10px
+}
+
+.friend-request--item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+
+  .response-option {
+    display: flex;
+    align-items: center;
+  }
+
+  .response-message {
+    line-height: 46px;
+    font-size: 0.9em;
+    color: #818181;
+  }
+
+}
+
+.button {
+  height: 30px;
+  padding: 5px 15px;
+  margin-left: 10px;
+  font-weight: 500;
+  border-radius: 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.primary {
+  background-color: mat.get-color-from-palette($signature-primary, 500);
+  color: white;
+
+  &:hover {
+    background-color: mat.get-color-from-palette($signature-primary, 400);
+  }
+}
+
+.disable {
+  background-color: mat.get-color-from-palette($signature-primary, 50);
+
+  &:hover {
+    background-color: mat.get-color-from-palette($signature-primary, 100);
+  }
+}
+
+.user-name {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-left: 15px;
+}
+

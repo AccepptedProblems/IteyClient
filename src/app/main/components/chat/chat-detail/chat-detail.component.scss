@@ -1,0 +1,116 @@
+@use "@angular/material" as mat;
+@import "src/styles";
+
+.chat-detail {
+
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-detail-header {
+  height: 60px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+
+  .user-avatar {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+  }
+
+  .channel-name {
+    font-size: 1.05em;
+    font-weight: 600;
+    margin-left: 15px;
+  }
+}
+
+.chat-detail-content {
+
+  height: 100%;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chat-detail-content-container {
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: scroll;
+  }
+}
+
+.chat-detail-footer {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+
+  .message-input-container {
+    $input-height: 36px;
+    height: $input-height;
+    padding: 0 15px;
+    margin-right: 15px;
+    background-color: rgba(225, 226, 231, 0.5);
+    flex: 1;
+    border-radius: calc($input-height/2);
+
+    .message-input {
+      height: $input-height;
+      line-height: $input-height;
+      width: 100%;
+      border: none;
+      background: unset;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .icon-container {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    padding: 4px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #e7e7e7;
+    }
+  }
+
+  .send-icon {
+    font-size: 1.6em;
+    color: mat.get-color-from-palette($signature-primary, 500);
+  }
+}
+
+.message {
+  display: flex;
+}
+
+.my-message {
+  justify-content: flex-end;
+
+  .message-container {
+    background-color: mat.get-color-from-palette($signature-primary, 500);
+    color: white;
+  }
+}
+
+.message-container {
+  padding: 10px;
+  margin-bottom: 1px;
+  border-radius: 10px;
+  max-width: 50%;
+}
+
+

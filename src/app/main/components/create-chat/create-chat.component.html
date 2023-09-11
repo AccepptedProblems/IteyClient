@@ -1,0 +1,25 @@
+<div class="search-user">
+  <div class="search-user-container">
+    <div class="search-input">
+      <div class="search-input-container">
+        <input class="user-search"
+               type="text"
+               placeholder="Tìm kiếm bạn bè">
+      </div>
+    </div>
+    <div class="user-container">
+      <div class="user-item" *ngFor="let user of users; trackBy: identify">
+        <div class="user-info">
+          <div class="user-avatar"> OK</div>
+          <div class="user-name">{{user.displayName}}</div>
+        </div>
+        <div class="user-option">
+          <div class="button primary prevent-select"
+               (click)="createChat(user)">
+            Nhắn tin
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

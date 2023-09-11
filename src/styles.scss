@@ -1,1 +1,75 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+@import "assets/theme";
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$signature-primary: mat.define-palette(mat.$indigo-palette);
+$signature-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$signature-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$signature-theme: mat.define-light-theme((
+  color: (
+    primary: $signature-primary,
+    accent: $signature-accent,
+    warn: $signature-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($signature-theme);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&display=swap');
+
+
 /* You can add global styles to this file, and also import other style files */
+$max-width: 1100px;
+$border-color: #cbcbcb;
+
+*{
+  font-size: 15px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.user-avatar {
+  display: flex;
+  justify-content: center;
+  line-height: 46px;
+  height: 46px;
+  width: 46px;
+  font-weight: 600;
+  color: mat.get-color-from-palette($signature-primary, 500);
+  background-color: mat.get-color-from-palette($signature-primary, 50);
+  border-radius: 23px;
+
+  .user-avatar-icon {
+    font-size: 1.8em;
+    line-height: 46px;
+  }
+}
+
+.prevent-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.p-dialog-header {
+  padding: 15px 20px 12px 20px !important;
+}

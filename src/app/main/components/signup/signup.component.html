@@ -1,0 +1,63 @@
+<div class="signup">
+  <div class="signup-container mat-elevation-z2">
+    <div class="signup-title"> Sign up</div>
+    <div class="input-field">
+      <div class="field-title">{{ 'Full name'}}</div>
+      <div class="input-container">
+        <input class="input"
+               placeholder="Enter your full name"
+               [formControl]="displayName">
+      </div>
+    </div>
+    <div class="input-field">
+      <div class="field-title">{{ 'Email'}}</div>
+      <div class="input-container">
+        <input class="input"
+               placeholder="Email"
+               [formControl]="email">
+      </div>
+    </div>
+
+    <div class="input-field">
+      <div class="field-title">{{ 'Password'}}</div>
+      <div class="input-container">
+        <input class="input"
+               [type]="showPwd? 'text' : 'password'"
+               [formControl]="password"
+               placeholder="Password">
+      </div>
+    </div>
+    <div class="input-field">
+      <div class="field-title">Gender</div>
+      <mat-radio-group class="radio-group" color="primary" aria-label="Select an option" [(ngModel)]="gender">
+        <mat-radio-button class="radio-option" value="MALE">Male</mat-radio-button>
+        <mat-radio-button class="radio-option" value="FEMALE">Female</mat-radio-button>
+        <mat-radio-button class="radio-option" value="OTHER">Other</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="input-field">
+      <div class="field-title">Date of birth</div>
+      <div class="input-container datepicker">
+        <input class="input"
+               matInput
+               [matDatepicker]="datepicker"
+               (dateInput)="addEvent('input', $event)"
+               placeholder="dd/MM/yyyy">
+        <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </div>
+    </div>
+    <p-toast></p-toast>
+    <button class="signup-btn" (click)="register()">
+      Register
+    </button>
+    <div class="login-navigate">
+      Already have an account?&nbsp; <span (click)="navigateToLogin()" class="navigate-signin-btn"> Login </span>
+    </div>
+  </div>
+</div>

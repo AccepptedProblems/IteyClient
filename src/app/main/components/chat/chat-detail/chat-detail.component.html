@@ -1,0 +1,52 @@
+<div *ngIf="selectedChannel" class="chat-detail">
+  <div class="chat-detail-header mat-elevation-z1">
+    <div class="user-avatar">
+      <span class="material-symbols-outlined user-avatar-icon">
+        person
+      </span>
+    </div>
+    <div class="channel-name"> {{selectedChannel.name}}</div>
+  </div>
+  <div class="chat-detail-content">
+    <div class="chat-detail-content-container" #chatContent>
+      <div *ngFor="let message of messages">
+        <ng-container *ngIf="message.userSendId === currentUser.id">
+          <ng-container *ngTemplateOutlet="myTextMessage; context: {message: message}"/>
+        </ng-container>
+        <ng-container *ngIf="message.userSendId !== currentUser.id">
+          <ng-container *ngTemplateOutlet="theirTextMessage; context: {message: message}"/>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="chat-detail-footer mat-elevation-z1">
+    <div class="message-input-container">
+      <input class="message-input"
+             [formControl]="messageForm"
+             type="text"
+             placeholder="Aa"
+             (keyup.enter)="sendMessage()">
+    </div>
+    <div *ngIf="messageForm.value !== ''" class="icon-container" (click)="sendMessage()">
+      <mat-icon class="send-icon">send</mat-icon>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #myTextMessage let-message="message">
+  <div class="message my-message text-message">
+    <div class="message-container mat-elevation-z1">
+      {{message.content}}
+    </div>
+
+  </div>
+</ng-template>
+
+<ng-template #theirTextMessage let-message="message">
+  <div class=" message their-message text-message">
+    <div class="message-container mat-elevation-z1">
+      {{message.content}}
+    </div>
+  </div>
+</ng-template>

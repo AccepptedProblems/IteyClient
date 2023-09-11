@@ -1,0 +1,70 @@
+<div class="chat-list-container">
+  <div class="chat-list-header">
+    <div class="header-title"> Chat</div>
+    <div class="chat-list-option">
+      <div #chatListOptionBtn>
+        <mat-icon (click)="onChatOptionToggle()"
+                  class="option-icon"
+        >
+          more_horiz
+        </mat-icon>
+      </div>
+
+      <span class="material-symbols-outlined new-chat-icon option-icon"
+            (click)="openCreateChat()">
+        new_window
+      </span>
+      <ng-container *ngIf="true; then chatListOption"/>
+    </div>
+
+  </div>
+  <div class="search">
+    <div class="chat-list-search-container">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input class="chat-list-search" type="text" placeholder="Tìm kiếm đoan hội thoại">
+    </div>
+  </div>
+  <div class="chat-list-item-container">
+    <ng-container *ngFor="let channelCustom of channelCustoms; trackBy: channelIdentity">
+      <div [className]="(isChannelSelected(channelCustom.channel) ? 'chat-selected' : '') + ' chat-item'"
+           (click)="onClickChannel(channelCustom.channel)">
+        <div class="user-avatar">
+          <span class="material-symbols-outlined user-avatar-icon">
+            person
+          </span>
+        </div>
+        <div class="channel-thumbnail">
+          <div class="channel-name"> {{channelCustom.channel.name}}</div>
+          <div *ngIf="channelCustom.channel.latestMess" class="latest-message">
+            {{channelCustom.channel.latestMess ? channelCustom.channel.latestMess.content : ""}}
+          </div>
+        </div>
+        <div class="chat-item-option">
+          <mat-icon [id]="channelCustom.channel.id" (click)="onChatItemOptionToggle(channelCustom)"
+                    class="channel-item-option" #chatItemOptionBtn>
+            more_horiz
+          </mat-icon>
+          <div *ngIf="channelCustom.showOption" class="chat-option mat-elevation-z1" #chatItemOption>
+            <div class="chat-option-item" (click)="onClickChatItemOption(channelCustom.channel)">
+              <span class="material-symbols-outlined chat-option-item--icon">delete</span>
+              <div>Xóa đoạn hội thoại</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #chatListOption>
+  <div *ngIf="showChatListOption" class="chat-option mat-elevation-z2">
+    <div class="chat-option-item"
+         *ngFor="let option of chatOptions; trackBy: trackByOption"
+         (click)="onClickOption(option)">
+      <span class="material-symbols-outlined chat-option-item--icon">{{option.ggIcon}}</span>
+      <div>{{option.title}}</div>
+    </div>
+  </div>
+</ng-template>
+
+

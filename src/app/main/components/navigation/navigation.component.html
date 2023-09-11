@@ -1,0 +1,11 @@
+<div *ngIf="!hideNav" class="navigation">
+  <div class="title">
+    IteyChat
+  </div>
+  <div class="user-option">
+    Xin chào, <span class="link prevent-select" (click)="navMenuToggle()">{{user?.displayName}}</span>
+    <div *ngIf="showNavigationMenu" class="nav-menu mat-elevation-z1" #navMenu >
+      <div class="nav-menu-item prevent-select" (click)="logout()"> Đăng xuất </div>
+    </div>
+  </div>
+</div>

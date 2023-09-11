@@ -1,0 +1,24 @@
+<div class="login">
+  <div class="login-container mat-elevation-z2">
+    <div class="login-title"> Login </div>
+    <div class="username-container">
+      <input class="input"
+             placeholder="Email"
+              (keyup)="onKeyup('email', $event)">
+    </div>
+    <div class="pwd-container">
+      <input class="input"
+             [type]="showPwd? 'text' : 'password'"
+             (keyup)="onKeyup('password', $event)"
+             placeholder="Password">
+      <mat-icon class="visibility-pwd-btn" (click)="showPwd = !showPwd">{{!showPwd ? 'visibility_off':'visibility'}}</mat-icon>
+    </div>
+    <p-toast></p-toast>
+    <button (click)="login()" class="signin-btn">
+      Sign in
+    </button>
+    <div class="signup-title">
+      Don't have an account?&nbsp; <span class="signup-btn" (click)="goToSignup()"> {{'Sign up'}} </span>
+    </div>
+  </div>
+</div>

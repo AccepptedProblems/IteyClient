@@ -1,0 +1,85 @@
+@use "@angular/material" as mat;
+@import "src/styles";
+
+.search-user {
+  border-top: 1px solid $border-color;
+  padding-top: 15px;
+}
+
+.search-user-container {
+
+}
+
+.search-input-container {
+  $input-height: 40px;
+  height: $input-height;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid $border-color;
+  border-radius: calc(($input-height + 10px) / 2);
+
+  .user-search {
+    height: $input-height;
+    line-height: $input-height;
+    width: 100%;
+    border: none;
+    background: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.user-container {
+  padding-top: 15px;
+}
+
+.user-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.user-name {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-left: 15px;
+}
+
+.button {
+  height: 30px;
+  padding: 5px 15px;
+  margin-left: 10px;
+  font-weight: 500;
+  border-radius: 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.primary {
+  background-color: mat.get-color-from-palette($signature-primary, 500);
+  color: white;
+
+  &:hover {
+    background-color: mat.get-color-from-palette($signature-primary, 400);
+  }
+}
+
+.disable {
+  background-color: mat.get-color-from-palette($signature-primary, 50);
+
+  &:hover {
+    cursor: unset;
+  }
+}
+
